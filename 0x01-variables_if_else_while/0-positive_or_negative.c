@@ -1,5 +1,9 @@
-#include <stdlib.h>
+/*
+*File: 0-positive_or_negative.c
+* Auth: Kalkidan A Worku
+*/
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 
 /**
@@ -24,5 +28,5 @@ int main(void)
 	{	
 		printf("%d is zero\n", n);
 	}
-	return (0);\
+	return (0);
 }
