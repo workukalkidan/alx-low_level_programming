@@ -1,5 +1,7 @@
-#ifndef HEADER_FILE
-#define HEADER_FILE
+#ifndef FILE_HOLBERTON
+#define FILE_HOLBERTON
+
+/*copy list from task*/
 
 int _putchar(char c);
 int _islower(int c);
