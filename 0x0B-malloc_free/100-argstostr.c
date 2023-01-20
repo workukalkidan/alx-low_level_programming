@@ -1,65 +1,50 @@
-#include <stdio.h>
-#include "holberton.h"
-
+#include "main.h"
+#include <stdlib.h>
 /**
- * _strlen - length of a string
- * @s: input char
- * Return: length of a string
- */
-
-int _strlen(char *s)
-{
-	int l = 0;
-
-	while (*s != '\0')
-	{
-		s++;
-		l++;
-	}
-	return (l);
-}
-
-/**
- * argstostr - concat
- * @ac: count
- * @av: vector
- * Return: string
- */
-
+  *argstostr - concatenates all arguments of the program.
+  *@ac: argument count.
+  *@av: pointer to array of size ac.
+  *Return: NULL if ac == 0 or av == null, Pointer to new string.
+  *NULL on fail.
+  */
 char *argstostr(int ac, char **av)
 {
-	int i, j, k;
-	int len, R = 0;
-	char *p;
+	int i, j, k, size;
+	char *arg;
 
-	if (!ac || !av)
-	{
+	size = 0;
+	k = 0;
+	if (ac == 0 || av == NULL)
 		return (NULL);
-	}
-	R = 0;
-
-	for (i = 0; i < ac; i++)
+	i = 0;
+	while (i < ac)
 	{
-		len = _strlen(av[i]) + 1;
-		R += len;
-	}
-	p = malloc(sizeof(char) * R + 1);
-
-	if (!p)
-	{
-		return (NULL);
-	}
-
-	for (i = 0; i < ac; i++)
-	{
-		len = _strlen(av[i]);
-
-		for (j = 0; j < len; j++, k++)
+		j = 0;
+		while (av[i][j])
 		{
-			p[k] = av[i][j];
+			size++;
+			j++;
 		}
-		p[k++] = '\n';
+		size++;
+		i++;
 	}
-	p[k] = '\0';
-	return (p);
+	arg = malloc((sizeof(char) * size) + 1);
+	if (arg == NULL)
+		return (NULL);
+	i = 0;
+	while (i < ac)
+	{
+		j = 0;
+		while (av[i][j])
+		{
+			arg[k] = av[i][j];
+			j++;
+			k++;
+		}
+		arg[k] = '\n';
+		k++;
+		i++;
+	}
+	arg[k] = '\0';
+	return (arg);
 }
